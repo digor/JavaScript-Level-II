@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>eShop</title>
+    <style>
+        header {
+            background: #000;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .cart-button {
+            font-size: 18px;
+            border: none;
+            width: 200px;
+            height: 30px;
+            transition: .5s;
+        }
+        .cart-button:hover {
+            background: #73AD21;
+            border-radius: 20px;
+            color: #fff;
+        }
+        .goods-list {
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+        }
+        .goods-item {
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+            border: 1px solid #000;
+            width: 200px;
+            overflow: hidden;
+            transition: .5s;
+        }
+        .goods-item:hover {
+            border-radius: 40px;
+        }
+        .goods-item h3 {
+            margin: 10px auto 5px;
+        }
+        .goods-item p {
+            margin: 5px auto 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <button class="cart-button" type="button">Корзина</button>
+    </header>
+    <main>
+        <div class="goods-list"></div>
+    </main>
+    <script>
+        const goods = [
+            {title: 'Shirt', price: 150}, 
+            {title: 'Socks', price: 50}, 
+            {title: 'Jacket', price: 350}, 
+            {title: 'Shoes', price: 250}
+        ];
+        
+        const renderGoodsItem = (title, price) => `<div class="goods-item"><img src="https://placehold.it/200x150" alt="image product"><h3>${title}</h3><p>${price}</p></div>`;
+
+        const renderGoodsList = list => {
+            let goodsList = list.map(item => renderGoodsItem(item.title, item.price));
+            document.querySelector('.goods-list').innerHTML = goodsList;
+        }
+        
+        renderGoodsList(goods);
+    </script>
+</body>
+
+</html>
